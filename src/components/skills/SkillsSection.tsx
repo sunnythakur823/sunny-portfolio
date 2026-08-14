@@ -10,21 +10,19 @@ export function SkillsSection() {
       <Container>
         <div className="flex flex-col gap-3 border-b border-border/70 pb-8 sm:pb-10">
           <p className="text-caption font-medium tracking-[0.24em] text-muted-foreground">
-            ENGINEERING STACK
+            TECHNICAL STACK
           </p>
-          <div className="max-w-2xl space-y-3">
-            <Heading level={2} className="max-w-[18ch]">Technologies I use to design, build and ship software.</Heading>
+          <div className="max-w-3xl space-y-3">
+            <Heading level={2} className="max-w-[18ch]">Technology stack built around practical product work.</Heading>
             <p className="text-body text-muted-foreground text-pretty">
-              Languages, frameworks, and tools I use to design, build, and ship software.
+              A concise description of the technologies and engineering areas I currently work with and learn through projects.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-10 sm:gap-12 lg:grid-cols-3">
-          {skillGroups.map((group) => (
-            <div key={group.category} className="flex flex-col gap-6">
-              <SkillCategory group={group} />
-            </div>
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {skillGroups.map((group, index) => (
+            <SkillCategory key={group.category} group={group} index={index} />
           ))}
         </div>
       </Container>
