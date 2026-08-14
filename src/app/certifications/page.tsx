@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
+
+import { CertificationsSection } from "@/components/certifications";
+
+export const metadata: Metadata = {
+  title: "Certifications & Learning | Sunny Kumar",
+  description: "Learning credentials and technical foundations in database design, analytics, and business technology learning.",
+};
+
 export default function CertificationsPage() {
   return (
     <main>
-      <h1>Certifications</h1>
-      <p>Certification details will be added here.</p>
+      <CertificationsSection />
     </main>
   );
 }
