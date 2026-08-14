@@ -13,7 +13,20 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: BlogArticleRouteProps): Promise<Metadata> {
   const article = getPublishedArticleBySlug((await params).slug);
   if (!article) return {};
-  return { title: `${article.title} | Blog`, description: article.excerpt, openGraph: { title: article.title, description: article.excerpt, type: "article" }, twitter: { card: "summary", title: article.title, description: article.excerpt } };
+  return {
+    title: `${article.title} | Engineering Notes`,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+    },
+  };
 }
 
 export default async function BlogArticleRoute({ params }: BlogArticleRouteProps) {
