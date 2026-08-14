@@ -13,8 +13,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: BlogArticleRouteProps): Promise<Metadata> {
   const article = getPublishedArticleBySlug((await params).slug);
   if (!article) return {};
+
   return {
-    title: `${article.title} | Engineering Notes`,
+    title: `${article.title} | Sunny Kumar Blog`,
     description: article.excerpt,
     openGraph: {
       title: article.title,

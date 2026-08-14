@@ -17,7 +17,20 @@ export async function generateMetadata({ params }: ProjectCaseStudyPageProps): P
 
   if (!project) return {};
 
-  return { title: `${project.title} | Project Case Study`, description: project.shortDescription };
+  return {
+    title: `${project.title} | Sunny Kumar`,
+    description: project.shortDescription,
+    openGraph: {
+      title: `${project.title} | Sunny Kumar`,
+      description: project.shortDescription,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Sunny Kumar`,
+      description: project.shortDescription,
+    },
+  };
 }
 
 export default async function ProjectCaseStudyPage({ params }: ProjectCaseStudyPageProps) {

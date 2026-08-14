@@ -1,10 +1,23 @@
 import type { NavItem } from "@/types";
 
 export const SITE_OWNER = "Sunny Kumar";
-export const SITE_ROLE = "Software Developer";
-export const SITE_NAME = `${SITE_OWNER} — ${SITE_ROLE} Portfolio`;
+export const SITE_ROLE = "BCA Developer";
+export const SITE_NAME = "Sunny Kumar | BCA Developer | AI, Full-Stack & Cloud";
 export const SITE_DESCRIPTION =
-  "Professional portfolio site for Sunny Kumar.";
+  "BCA student and software developer building practical work across AI/ML, web development, full-stack engineering, and cloud technologies.";
+export const SITE_KEYWORDS = [
+  "Sunny Kumar",
+  "BCA student",
+  "software developer",
+  "AI developer",
+  "full stack developer",
+  "web developer",
+  "cloud technologies",
+  "portfolio",
+  "projects",
+  "certifications",
+  "software engineering",
+] as const;
 
 export const LAYOUT = {
   maxContentWidth: "80rem",

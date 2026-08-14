@@ -1,8 +1,27 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ProjectCard } from "@/components/projects";
 import { Container, Heading, Section } from "@/components/ui";
 import { projects } from "@/data/projects";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Selected software projects by Sunny Kumar covering AI, machine learning, full-stack development, APIs, and practical product engineering.",
+  openGraph: {
+    title: "Projects | Sunny Kumar",
+    description:
+      "Selected software projects by Sunny Kumar covering AI, machine learning, full-stack development, APIs, and practical product engineering.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects | Sunny Kumar",
+    description:
+      "Selected software projects by Sunny Kumar covering AI, machine learning, full-stack development, APIs, and practical product engineering.",
+  },
+};
 
 const featuredProjects = projects.filter((project) => project.featured);
 const supportingProjects = projects.filter((project) => !project.featured);
