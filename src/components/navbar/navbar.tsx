@@ -22,8 +22,8 @@ const mobileFocusSelector =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 function isActivePath(pathname: string, href: string): boolean {
-  if (href === "/projects") {
-    return pathname === "/projects" || pathname.startsWith("/projects/");
+  if (href === "/projects" || href === "/blog") {
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   return pathname === href;
@@ -31,10 +31,10 @@ function isActivePath(pathname: string, href: string): boolean {
 
 function getLinkClasses(active: boolean): string {
   return cn(
-    "link-base inline-flex items-center rounded-full px-3 py-2 text-small no-underline",
+    "inline-flex items-center rounded-full px-3.5 py-2 text-small font-medium transition-colors duration-200 no-underline",
     active
-      ? "text-foreground bg-secondary"
-      : "text-muted-foreground hover:text-foreground hover:bg-secondary/60",
+      ? "bg-secondary text-foreground"
+      : "text-muted-foreground hover:bg-secondary/70 hover:text-foreground",
   );
 }
 
@@ -145,15 +145,15 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b transition-[padding,background-color,border-color,backdrop-filter,box-shadow] duration-200",
+        "sticky top-0 z-40 border-b transition-[padding,background-color,border-color,box-shadow,backdrop-filter] duration-200",
         isScrolled
-          ? "border-border/80 bg-background/88 py-3 backdrop-blur-xl shadow-[0_1px_0_rgb(15_23_42/0.04)]"
-          : "border-transparent bg-background/55 py-4 backdrop-blur-md",
+          ? "border-border/80 bg-background/88 py-3 shadow-[0_1px_0_rgb(15_23_42/0.04)] backdrop-blur-xl"
+          : "border-transparent bg-background/70 py-4 backdrop-blur-md",
       )}
     >
-      <nav aria-label="Primary" className="container-page flex items-center gap-3">
+      <nav aria-label="Primary navigation" className="container-page flex items-center gap-3">
         <Link
-          className="shrink-0 rounded-full px-1.5 py-2 text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:text-base"
+          className="shrink-0 rounded-full px-1.5 py-2 text-sm font-semibold tracking-tight text-foreground transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:text-base"
           href="/"
           aria-label={`${SITE_OWNER} home`}
         >
@@ -161,7 +161,7 @@ export function Navbar() {
         </Link>
 
         <div className="hidden flex-1 items-center justify-center lg:flex">
-          <div className="flex items-center gap-1 rounded-full border border-border/70 bg-card/80 px-2 py-1 backdrop-blur-sm">
+          <div className="flex items-center gap-1 rounded-full border border-border/70 bg-card/80 px-2 py-1.5 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm">
             {NAVBAR_PRIMARY_LINKS.map((item) => {
               const active = isActivePath(pathname, item.href);
 
@@ -179,26 +179,35 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="ml-auto hidden items-center gap-2 lg:flex">
+        <div className="ml-auto hidden items-center gap-2 md:flex">
           <a
-            className="button-base whitespace-nowrap px-3 py-2 text-small text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+            className="button-base whitespace-nowrap border-border bg-transparent px-3 py-2 text-small text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
             href={NAVBAR_SECONDARY_LINKS[0].href}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="GitHub profile"
+            aria-label="GitHub profile (opens in a new tab)"
           >
             GitHub
           </a>
+          <a
+            className="button-base whitespace-nowrap border-border bg-transparent px-3 py-2 text-small text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+            href={NAVBAR_SECONDARY_LINKS[1].href}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="LinkedIn profile (opens in a new tab)"
+          >
+            LinkedIn
+          </a>
           <Link
-            className="button-base whitespace-nowrap border-border bg-secondary text-foreground"
+            className="button-base border-border bg-secondary px-4 py-2.5 text-small text-foreground"
             data-variant="secondary"
             href={RESUME_HREF}
-            aria-label="Resume"
+            aria-label="View resume"
           >
             Resume
           </Link>
           <Link
-            className="button-base whitespace-nowrap bg-primary text-white"
+            className="button-base bg-primary px-4 py-2.5 text-small text-white"
             data-variant="primary"
             href="/contact"
             aria-label="Contact Sunny Kumar"
@@ -209,7 +218,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="ml-auto inline-flex items-center justify-center rounded-full border border-border/70 bg-card/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:hidden"
+          className="ml-auto inline-flex items-center justify-center rounded-full border border-border/70 bg-card/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
           aria-label={menuState.isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuState.isOpen}
           aria-controls="mobile-navigation-menu"
@@ -222,7 +231,7 @@ export function Navbar() {
       {menuState.isVisible ? (
         <div
           className={cn(
-            "fixed inset-0 z-50 lg:hidden",
+            "fixed inset-0 z-50 md:hidden",
             menuState.isOpen ? "pointer-events-auto" : "pointer-events-none",
           )}
           aria-hidden={!menuState.isOpen}
