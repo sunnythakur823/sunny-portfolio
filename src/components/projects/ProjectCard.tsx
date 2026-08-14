@@ -40,6 +40,10 @@ function ProjectVisual({ featured, category }: { featured?: boolean; category: s
 }
 
 export function ProjectCard({ project, featured = false }: ProjectCardProps) {
+  const description = project.overview ?? project.shortDescription;
+  const problemStatement = project.problem ?? "Problem framing and product goals are documented in the project case study.";
+  const featureList = project.features?.slice(0, 3) ?? [];
+
   return (
     <Card
       elevated
@@ -48,10 +52,10 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
         featured ? "h-full" : "h-full",
       )}
     >
-      <article className={cn("flex h-full flex-col", featured ? "lg:grid lg:grid-rows-[auto_1fr]" : "") }>
+      <article className={cn("flex h-full flex-col", featured ? "lg:grid lg:grid-rows-[auto_1fr]" : "")}>
         <ProjectVisual featured={featured} category={project.category} />
 
-        <div className={cn("flex flex-1 flex-col gap-5 p-5 sm:p-6", featured ? "lg:p-7" : "") }>
+        <div className={cn("flex flex-1 flex-col gap-5 p-5 sm:p-6", featured ? "lg:p-7" : "")}>
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone="primary" className="text-[0.7rem] uppercase tracking-[0.18em]">
               {project.category}
@@ -67,10 +71,24 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             <Heading level={3} className="max-w-[18ch] text-balance">
               {project.title}
             </Heading>
+            <p className="text-small font-medium uppercase tracking-[0.12em] text-primary/80">
+              {problemStatement}
+            </p>
             <p className="max-w-2xl text-body text-muted-foreground text-pretty">
-              {project.shortDescription}
+              {description}
             </p>
           </div>
+
+          {featureList.length > 0 ? (
+            <ul className="space-y-2 text-small text-muted-foreground">
+              {featureList.map((feature) => (
+                <li key={feature} className="flex items-start gap-2">
+                  <span aria-hidden="true" className="mt-1.5 text-primary">•</span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
 
           {project.technologies.length > 0 ? (
             <div className="flex flex-wrap gap-2">
@@ -84,9 +102,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               ))}
             </div>
           ) : (
-            <p className="text-small text-muted-foreground">
-              Technologies can be configured later.
-            </p>
+            <p className="text-small text-muted-foreground">Technology stack details will be added as they are verified.</p>
           )}
 
           <div className="mt-auto flex items-center justify-between gap-4 border-t border-border/70 pt-4 text-small">
@@ -94,7 +110,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               {project.slug}
             </span>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center justify-end gap-3">
               <Link
                 href={`/projects/${project.slug}`}
                 className="link-base inline-flex items-center gap-1.5 no-underline transition-transform duration-200 group-hover:translate-x-0.5"
