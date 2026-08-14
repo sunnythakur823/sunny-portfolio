@@ -12,18 +12,18 @@ export type AboutProfile = {
 
 export const aboutProfile: AboutProfile = {
   introduction:
-    "Sunny Kumar is a BCA student at Amity University Jharkhand and an aspiring Software Developer. He learns by building software and exploring practical problems across full-stack development, AI, and related technical disciplines.",
+    "I am a BCA student and aspiring software developer who learns by building practical software. My focus is on web applications, APIs, and AI-powered projects that solve real problems and provide clear product value.",
   principles: [
-    "Build before over-engineering.",
-    "Understand the problem before choosing the technology.",
-    "Prefer maintainable systems over unnecessary complexity.",
-    "Learn through real projects.",
+    "Build pragmatic solutions before over-engineering.",
+    "Understand the problem before choosing tools.",
+    "Prefer maintainable, testable systems over unnecessary complexity.",
+    "Learn by shipping real projects and iterating.",
   ],
   technicalFocus: [
-    { label: "Full-stack", technologies: ["Flask"] },
-    { label: "AI / ML", technologies: ["Python", "AI", "NLP"] },
+    { label: "Web & Full-stack", technologies: ["Flask"] },
+    { label: "AI / ML", technologies: ["Python", "NLP"] },
+    { label: "APIs & Backend", technologies: ["Flask"] },
     { label: "Cloud", technologies: [] },
-    { label: "Security", technologies: [] },
   ],
   learningAreas: [
     "Software Engineering",
