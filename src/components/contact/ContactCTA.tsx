@@ -9,14 +9,14 @@ type ContactCTAProps = Readonly<{
 
 export function ContactCTA({ email, linkedin, github, className }: ContactCTAProps) {
   return (
-    <div className={cn("flex flex-col sm:flex-row sm:items-center sm:gap-3", className)}>
+    <div className={cn("flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center", className)}>
       {email ? (
         <a
           href={`mailto:${email}`}
-          className="button-base"
+          className="button-base bg-primary text-white"
           aria-label={`Email ${email}`}
         >
-          Email Me
+          Email me
         </a>
       ) : null}
 
@@ -24,7 +24,7 @@ export function ContactCTA({ email, linkedin, github, className }: ContactCTAPro
         href={linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className="button-base !bg-transparent !text-foreground border border-border"
+        className="button-base border border-border bg-transparent text-foreground"
         aria-label="Connect on LinkedIn (opens in a new tab)"
       >
         Connect on LinkedIn
@@ -35,7 +35,7 @@ export function ContactCTA({ email, linkedin, github, className }: ContactCTAPro
           href={github}
           target="_blank"
           rel="noopener noreferrer"
-          className="link-base mt-3 sm:mt-0 sm:ml-3 text-small"
+          className="button-base border border-border bg-secondary text-foreground"
           aria-label="View GitHub profile (opens in a new tab)"
         >
           View GitHub
