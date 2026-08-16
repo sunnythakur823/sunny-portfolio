@@ -30,7 +30,7 @@ export function HeroVisual() {
               <div className="relative aspect-[4/5] min-h-[360px] overflow-hidden sm:min-h-[400px]">
                 <Image
                   src="/profile.png"
-                  alt="Sunny Kumar — BCA Developer"
+                  alt="Sunny Kumar - BCA Developer"
                   fill
                   priority
                   sizes="(max-width: 640px) 100vw, 45vw"
