@@ -7,6 +7,16 @@ import { EngineeringProcess } from "./EngineeringProcess";
 import { TechnicalFocus } from "./TechnicalFocus";
 
 export function AboutSection() {
+  const hasWeb = projects.some((project) => /Full-Stack|Full-Stack App|Business Website|Website/i.test(project.category));
+  const hasApi = projects.some((project) => /API/i.test(project.category) || project.technologies?.some((technology) => /Python|Flask/i.test(technology)));
+  const hasAi = projects.some((project) => project.technologies?.some((technology) => /AI|NLP/i.test(technology)));
+
+  const projectCategories = [
+    hasWeb ? { title: "Web Applications", description: "Full‑stack apps and business websites that deliver real value." } : null,
+    hasApi ? { title: "APIs & Backend", description: "APIs and backend services for data-driven features." } : null,
+    hasAi ? { title: "AI & NLP", description: "AI and NLP projects focused on practical problem solving." } : null,
+  ].filter(Boolean) as Array<{ title: string; description: string }>;
+
   return (
     <Section id="about" className="relative overflow-hidden border-t border-border/70">
       <Container>
@@ -21,25 +31,12 @@ export function AboutSection() {
                 <p className="text-caption font-medium text-muted-foreground">WHAT I BUILD</p>
                 <h3 id="what-i-build-heading" className="mt-3 text-h3">Practical applications with clear value</h3>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {/* Derive categories from existing projects and present concise descriptions */}
-                  {(() => {
-                    const hasWeb = projects.some((p) => /Full-Stack|Full-Stack App|Business Website|Website/i.test(p.category));
-                    const hasAI = projects.some((p) => p.technologies?.some((t) => /AI|NLP/i.test(t)));
-                    const hasApi = projects.some((p) => /API/i.test(p.category) || p.technologies?.some((t) => /Python|Flask/i.test(t)));
-
-                    const items: { title: string; description: string; tech?: string[] }[] = [];
-
-                    if (hasWeb) items.push({ title: "Web Applications", description: "Full‑stack apps and business websites that deliver real value.", tech: [] });
-                    if (hasApi) items.push({ title: "APIs & Backend", description: "APIs and backend services for data-driven features.", tech: [] });
-                    if (hasAI) items.push({ title: "AI & NLP", description: "AI and NLP projects focused on practical problem solving.", tech: [] });
-
-                    return items.map((it) => (
-                      <div key={it.title} className="rounded-2xl border border-border/70 bg-card p-5">
-                        <p className="text-caption font-medium text-muted-foreground">{it.title}</p>
-                        <p className="mt-3 text-small text-foreground">{it.description}</p>
-                      </div>
-                    ));
-                  })()}
+                  {projectCategories.map((item) => (
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-card p-5">
+                      <p className="text-caption font-medium text-muted-foreground">{item.title}</p>
+                      <p className="mt-3 text-small text-foreground">{item.description}</p>
+                    </div>
+                  ))}
                 </div>
               </section>
 

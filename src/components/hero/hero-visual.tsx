@@ -5,7 +5,7 @@ const technicalLabels = ["React", "Next.js", "TypeScript", "Tailwind", "AI", "Cl
 export function HeroVisual() {
   return (
     <div className="hero-fade-up-delay-2 relative lg:pl-8">
-      <div className="hero-visual-panel hero-lift relative mx-auto w-full max-w-[34rem] p-4 sm:p-6">
+      <div className="hero-visual-panel hero-lift relative mx-auto w-full max-w-full sm:max-w-[34rem] p-4 sm:p-6">
         <div className="hero-grid-overlay absolute inset-0 opacity-70" aria-hidden="true" />
         <div className="hero-noise absolute inset-0 pointer-events-none" aria-hidden="true" />
 

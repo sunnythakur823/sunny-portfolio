@@ -29,15 +29,6 @@ function isActivePath(pathname: string, href: string): boolean {
   return pathname === href;
 }
 
-function getLinkClasses(active: boolean): string {
-  return cn(
-    "inline-flex items-center rounded-full px-3.5 py-2 text-small font-medium transition-colors duration-200 no-underline",
-    active
-      ? "bg-secondary text-foreground"
-      : "text-muted-foreground hover:bg-secondary/70 hover:text-foreground",
-  );
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,8 +65,20 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
+    let frameId = 0;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 8);
+      if (frameId) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        const nextIsScrolled = window.scrollY > 8;
+        setIsScrolled((currentState) =>
+          currentState === nextIsScrolled ? currentState : nextIsScrolled,
+        );
+        frameId = 0;
+      });
     };
 
     handleScroll();
@@ -83,6 +86,9 @@ export function Navbar() {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
     };
   }, []);
 
@@ -170,7 +176,12 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={getLinkClasses(active)}
+                  className={cn(
+                    "inline-flex items-center rounded-full px-3.5 py-2 text-small font-medium transition-colors duration-200 no-underline",
+                    active
+                      ? "bg-secondary text-foreground"
+                      : "text-muted-foreground hover:bg-secondary/70 hover:text-foreground",
+                  )}
                 >
                   {item.label}
                 </Link>

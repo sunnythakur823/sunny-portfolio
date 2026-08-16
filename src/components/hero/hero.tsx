@@ -2,16 +2,20 @@ import fs from "fs";
 import path from "path";
 
 import { Container, Section } from "@/components/ui";
-import { RESUME_HREF, SITE_ROLE } from "@/lib/constants";
+import { SITE_ROLE, RESUME_HREF } from "@/lib/constants";
 import { contactData } from "@/data/contact";
 
 import { HeroContent } from "./hero-content";
 import { HeroVisual } from "./hero-visual";
 
 export function Hero() {
-  // Check for a real resume file in `public/` before exposing a resume link
-  const resumePath = path.join(process.cwd(), "public", RESUME_HREF.replace(/^\//, ""));
-  const hasResume = fs.existsSync(resumePath);
+  const hasResume = (() => {
+    try {
+      return fs.existsSync(path.join(process.cwd(), "public", RESUME_HREF.replace(/^\//, "")));
+    } catch {
+      return false;
+    }
+  })();
 
   const statusLabel = contactData.availability?.label;
 

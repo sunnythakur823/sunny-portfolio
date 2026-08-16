@@ -20,7 +20,7 @@ export function SkillsSection() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, index) => (
             <SkillCategory key={group.category} group={group} index={index} />
           ))}

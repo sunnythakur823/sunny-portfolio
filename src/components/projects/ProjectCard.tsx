@@ -14,7 +14,7 @@ function ProjectVisual({ featured, category }: { featured?: boolean; category: s
     <div
       className={cn(
         "relative overflow-hidden border-b border-border/70 bg-[radial-gradient(circle_at_top_left,_color-mix(in_srgb,_var(--primary)_16%,_transparent)_0%,_transparent_55%),linear-gradient(180deg,_color-mix(in_srgb,_var(--card)_96%,_transparent)_0%,_color-mix(in_srgb,_var(--secondary)_94%,_transparent)_100%)]",
-        featured ? "min-h-56 sm:min-h-64" : "min-h-44",
+        featured ? "min-h-40 sm:min-h-56 sm:min-h-64" : "min-h-40 sm:min-h-44",
       )}
       aria-hidden="true"
     >

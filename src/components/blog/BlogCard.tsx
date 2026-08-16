@@ -1,18 +1,22 @@
 import Link from "next/link";
 
 import type { BlogArticle } from "@/types/blog";
+import { cn } from "@/lib/utils";
 
 import { BlogArticleMeta } from "./BlogArticleMeta";
 
 export function BlogCard({ article, featured = false }: Readonly<{ article: BlogArticle; featured?: boolean }>) {
   return (
-    <article className={`group flex h-full flex-col rounded-[1.5rem] border border-border bg-card p-5 transition-[border-color,transform,box-shadow] duration-200 motion-reduce:transition-none hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_12px_24px_rgba(15,23,42,0.06)] ${featured ? "sm:p-6" : "sm:p-5"}`}>
+    <article className={cn(
+      "group flex h-full flex-col rounded-[1.5rem] border border-border bg-card p-5 transition-[border-color,transform,box-shadow] duration-200 motion-reduce:transition-none hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_12px_24px_rgba(15,23,42,0.06)]",
+      featured ? "sm:p-6" : "sm:p-5",
+    )}>
       <div className="flex items-center justify-between gap-3">
         <p className="text-caption font-medium tracking-[0.18em] text-muted-foreground">{article.category}</p>
         {article.featured ? <span className="text-caption text-primary">Featured</span> : null}
       </div>
 
-      <h2 className={`mt-4 text-balance ${featured ? "text-h2" : "text-h3"}`}>
+      <h2 className={cn("mt-4 text-balance", featured ? "text-h2" : "text-h3")}>
         <Link href={`/blog/${article.slug}`} className="link-base no-underline">
           {article.title}
           <span aria-hidden="true" className="ml-2 inline-block text-primary transition-transform duration-200 motion-reduce:transition-none group-hover:translate-x-0.5">→</span>
