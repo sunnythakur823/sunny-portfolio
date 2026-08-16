@@ -14,10 +14,11 @@ export function HeroContent({ statusLabel, resumeHref }: HeroContentProps) {
         <p className="hero-fade-up text-caption font-medium tracking-[0.24em] text-muted-foreground">SOFTWARE DEVELOPER</p>
 
         <div className="hero-lift flex flex-col gap-2">
-          <Heading level={1} className="text-display max-w-[26ch] text-balance">
+          <Heading level={1} className="text-display max-w-[18ch] text-balance">
             Hi, I&apos;m Sunny Kumar.
             <br />
-            Building practical software for real-world problems.
+            <span className="block">Building practical software</span>
+            <span className="block">for real-world problems.</span>
           </Heading>
         </div>
 
