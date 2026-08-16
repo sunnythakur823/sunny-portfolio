@@ -48,26 +48,55 @@ export function CareerGrowthSection() {
               {education.institution}
             </p>
 
-            {education.expectedGraduation ? (
-              <p className="mt-5 text-small">
-                <span className="text-muted-foreground">
-                  Expected graduation{" "}
-                </span>
-                {education.expectedGraduation}
-              </p>
-            ) : null}
+            <div className="mt-5 inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1.5 text-caption font-medium text-foreground">
+              Expected Graduation · {education.expectedGraduation}
+            </div>
 
             {education.academicBackground?.length ? (
-              <div className="mt-8 border-t border-border/70 pt-5">
-                <p className="text-caption font-medium text-muted-foreground">
+              <div className="mt-8 border-t border-border/70 pt-6">
+                <p className="text-caption font-medium tracking-[0.16em] text-muted-foreground">
                   ACADEMIC BACKGROUND
                 </p>
 
-                <ul className="mt-3 space-y-2 text-small text-muted-foreground">
-                  {education.academicBackground.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <div className="mt-5 space-y-4">
+                  {education.academicBackground.map((item) => {
+                    const isClass12 = item.startsWith("Class 12");
+                    const title = isClass12
+                      ? "Class 12 — Commerce"
+                      : "Class 10";
+
+                    const details = isClass12
+                      ? "St. Aloysius Plus 2 School, Ranchi"
+                      : "St. Kuldeep High School, Harmu";
+
+                    const result = isClass12
+                      ? "68.20% · 2024"
+                      : "84.80% · 2022";
+
+                    return (
+                      <article
+                        key={item}
+                        className="rounded-2xl border border-border/70 bg-card p-4 transition-colors hover:border-border"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3 className="text-small font-semibold text-foreground">
+                              {title}
+                            </h3>
+
+                            <p className="mt-1 text-small leading-6 text-muted-foreground">
+                              {details}
+                            </p>
+                          </div>
+
+                          <span className="shrink-0 rounded-full bg-secondary px-2.5 py-1 text-caption font-medium text-foreground">
+                            {result}
+                          </span>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
               </div>
             ) : null}
           </aside>

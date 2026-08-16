@@ -33,7 +33,7 @@ export const education: EducationEntry = {
   institution: "Amity University Jharkhand",
   expectedGraduation: "2027",
   academicBackground: [
-    "Class 12 — St. Aloysius Plus 2 School, Ranchi — 68.20% — 2024",
+    "Class 12 — Commerce — St. Aloysius Plus 2 School, Ranchi — 68.20% — 2024",
     "Class 10 — St. Kuldeep High School, Harmu — 84.80% — 2022",
   ],
 };
