@@ -29,8 +29,8 @@ export function HeroVisual() {
             <div className="grid sm:grid-cols-[0.9fr_1.1fr]">
               <div className="relative aspect-[4/5] min-h-[360px] overflow-hidden sm:min-h-[400px]">
                 <Image
-                  src="/profile-photo.png"
-                  alt="Sunny Kumar â€” BCA Developer"
+                  src="/profile.png"
+                  alt="Sunny Kumar — BCA Developer"
                   fill
                   priority
                   sizes="(max-width: 640px) 100vw, 45vw"
