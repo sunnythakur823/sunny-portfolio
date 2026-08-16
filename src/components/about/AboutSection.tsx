@@ -3,7 +3,7 @@
 import { aboutProfile } from "@/data/about";
 import { projects } from "@/data/projects";
 import { Container, Section } from "@/components/ui";
-import { RESUME_HREF } from "@/lib/constants";
+import { ResumeAccess } from "./ResumeAccess";
 
 import { EngineeringPrinciples } from "./EngineeringPrinciples";
 import { EngineeringProcess } from "./EngineeringProcess";
@@ -233,13 +233,7 @@ export function AboutSection() {
               >
                 View Projects
               </Link>
-
-              <Link
-                href={RESUME_HREF}
-                className="button-base border-border bg-secondary px-5 py-3 text-sm text-foreground"
-              >
-                View Resume
-              </Link>
+              <ResumeAccess />
 
               <Link
                 href="/contact"
@@ -258,3 +252,5 @@ export function AboutSection() {
     </Section>
   );
 }
+
+
