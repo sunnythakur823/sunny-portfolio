@@ -12,24 +12,26 @@ export type AboutProfile = {
 
 export const aboutProfile: AboutProfile = {
   introduction:
-    "I am a BCA student and aspiring software developer who learns by building practical software. My focus is on web applications, APIs, and AI-powered projects that solve real problems and provide clear product value.",
+    "Sunny Kumar is a BCA student and software developer focused on building practical applications across AI/ML, full-stack development, cloud technologies, and modern web engineering. I prefer solving real problems with clear architecture, maintainable code, and product-minded thinking rather than building for the sake of complexity.",
   principles: [
-    "Build pragmatic solutions before over-engineering.",
-    "Understand the problem before choosing tools.",
-    "Prefer maintainable, testable systems over unnecessary complexity.",
-    "Learn by shipping real projects and iterating.",
+    "Keep solutions simple, useful, and maintainable.",
+    "Understand the problem before choosing the stack.",
+    "Build for usability, performance, and long-term clarity.",
+    "Learn by shipping projects and improving through iteration.",
+    "Think in product terms while engineering with discipline.",
+    "Stay curious and keep growing through practical work.",
   ],
   technicalFocus: [
-    { label: "Web & Full-stack", technologies: ["Flask"] },
-    { label: "AI / ML", technologies: ["Python", "NLP"] },
-    { label: "APIs & Backend", technologies: ["Flask"] },
-    { label: "Cloud", technologies: [] },
+    { label: "Frontend", technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+    { label: "Backend", technologies: ["Python", "Flask", "REST APIs"] },
+    { label: "AI / ML", technologies: ["Python", "AI", "NLP"] },
+    { label: "Cloud & Systems", technologies: ["Cloud", "Scalable Architecture"] },
   ],
   learningAreas: [
     "Software Engineering",
     "AI/ML",
-    "Cloud Computing",
-    "Cybersecurity",
-    "Problem Solving",
+    "Full-Stack Development",
+    "Cloud Technologies",
+    "Product-Focused Problem Solving",
   ],
 };

@@ -11,6 +11,6 @@ export const contactData: ContactData = {
   name: "Sunny Kumar",
   role: "Software Developer",
   github: "https://github.com/sunnythakur823",
-  linkedin: "https://www.linkedin.com/in/sunny-kumar-31552833/",
+  linkedin: "https://www.linkedin.com/in/sunny-kumar-31552833a/",
   // Add a verified public email and optional availability status when ready.
 };

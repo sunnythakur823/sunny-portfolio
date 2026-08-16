@@ -53,7 +53,7 @@ export const NAVBAR_PRIMARY_LINKS: NavItem[] = [
 
 export const NAVBAR_SECONDARY_LINKS = [
   { label: "GitHub", href: "https://github.com/sunnythakur823" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sunny-kumar-31552833/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sunny-kumar-31552833a/" },
 ] as const;
 
 export const RESUME_HREF = "/resume.pdf";
