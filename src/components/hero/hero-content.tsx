@@ -14,16 +14,15 @@ export function HeroContent({ statusLabel, resumeHref }: HeroContentProps) {
         <p className="hero-fade-up text-caption font-medium tracking-[0.24em] text-muted-foreground">SOFTWARE DEVELOPER</p>
 
         <div className="hero-lift flex flex-col gap-2">
-          <Heading level={1} className="text-display max-w-[18ch] text-balance">
+          <Heading level={1} className="text-display max-w-[26ch] text-balance">
             Hi, I&apos;m Sunny Kumar.
             <br />
-            <span className="block">I build practical software</span>
-            <span className="block">for real-world problems.</span>
+            Building practical software for real-world problems.
           </Heading>
         </div>
 
         <p className="hero-fade-up-delay-1 max-w-xl text-body text-muted-foreground text-pretty sm:text-lg">
-          BCA student and aspiring software developer focused on building practical applications across software engineering, AI/ML, web development, and modern cloud technologies.
+          BCA student and aspiring software developer focused on building practical applications across software engineering, AI/ML, web development, and modern technologies.
         </p>
       </div>
 
