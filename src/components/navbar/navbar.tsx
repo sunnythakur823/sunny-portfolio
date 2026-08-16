@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,11 +7,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   NAVBAR_PRIMARY_LINKS,
   NAVBAR_SECONDARY_LINKS,
-  RESUME_HREF,
   SITE_OWNER,
   MOTION,
 } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { ResumeAccess } from "../about/ResumeAccess";
 
 type MobileMenuState = {
   isVisible: boolean;
@@ -209,14 +209,7 @@ export function Navbar() {
           >
             LinkedIn
           </a>
-          <Link
-            className="button-base border-border bg-secondary px-4 py-2.5 text-small text-foreground"
-            data-variant="secondary"
-            href={RESUME_HREF}
-            aria-label="View resume"
-          >
-            Resume
-          </Link>
+          <ResumeAccess />
           <Link
             className="button-base bg-primary px-4 py-2.5 text-small text-white"
             data-variant="primary"
@@ -325,13 +318,7 @@ export function Navbar() {
                 >
                   LinkedIn
                 </a>
-                <Link
-                  className="rounded-2xl px-3 py-3 text-foreground transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  href={RESUME_HREF}
-                  onClick={handleMobileLinkClick}
-                >
-                  Resume
-                </Link>
+                <div onClick={handleMobileLinkClick}><ResumeAccess /></div>
                 <Link
                   className="rounded-2xl px-3 py-3 text-foreground transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   href="/contact"
@@ -347,3 +334,4 @@ export function Navbar() {
     </header>
   );
 }
+
