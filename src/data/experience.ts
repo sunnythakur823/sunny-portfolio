@@ -1,4 +1,4 @@
-import type { AchievementEntry, EducationEntry, ExperienceEntry } from "@/types";
+﻿import type { AchievementEntry, EducationEntry, ExperienceEntry } from "@/types";
 
 export const experienceEntries: ExperienceEntry[] = [
   {
@@ -32,7 +32,10 @@ export const education: EducationEntry = {
   program: "BCA",
   institution: "Amity University Jharkhand",
   expectedGraduation: "2027",
-  academicBackground: ["Class 10: 84.8%", "Class 12: 68.2% — Commerce"],
+  academicBackground: [
+    "Class 12 — St. Aloysius Plus 2 School, Ranchi — 68.20% — 2024",
+    "Class 10 — St. Kuldeep High School, Harmu — 84.80% — 2022",
+  ],
 };
 
 /** Add only confirmed achievements; the UI remains hidden while this is empty. */
